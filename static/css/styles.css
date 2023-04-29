@@ -3,19 +3,39 @@
     padding: 0;
     box-sizing: border-box;
 }
-  
+header{
+    padding-top: 40px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 50px;
+    color: #017bab;
+    text-align: center;
+}
+
+.img{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    
+}
+img{
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px #017bab;
+    
+}
+
 body {
     font-family: arial;
     
     background: #000111;
     
 }
+/*
 
-h1 {
-    font-size: 30px;
-    color: #017bab;
-}
-h2, h3 {
+
+h2, h3, footer {
     color:white;
 }
 
@@ -34,6 +54,12 @@ form {
     border-top: 4px solid #017bab;
     border-bottom: 4px solid #1b2325;
     color: white;
+}
+
+footer{
+    
+    border-top: 10px;
+    border-bottom: 10px;
 }
 
 form div{

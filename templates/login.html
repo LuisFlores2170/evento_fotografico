@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,20 +8,21 @@
     <title>LOGIN</title>
 </head>
 <body>
-
-
-    
-   <body>
-       <center>
-        
-        <header>
-             <h1>
-                  BIBLIOTECA VIRTUAL
-             </h1>
-             <img src="https://admisionweb.uagrm.edu.bo/img/ficct-892x892.png" width="400" alt="">
-        </header>
+     <body>
+               <header>
+                    <h1>EVENTO FOTOGRAFICO</h1>
+                    <div class="img">
+                         <img style="
+                                   background-image: url({{foto}});
+                                   background-size: contain;
+                                   background-repeat: no-repeat;
+                              " 
+                              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                              width="550" >
+                    </div>
+               </header>
    
-       <form action="{{url_for('control_persona')}}" method="POST">
+       <form action="#" method="POST">
              
              <h2>LOGIN</h2>
              {% with messages = get_flashed_messages()  %}
@@ -31,12 +32,12 @@
              {% endwith %}
              <div>
                   <input name="nombre" type="text" required>
-                  <label>nombre</label>
+                  <label>USUARIO</label>
              </div>
            
              <div>
                   <input name="codigo" type="text" required>
-                   <label>codigo</label>
+                   <label>CONTARSEÑA</label>
              </div>
    
              
@@ -47,10 +48,11 @@
        <div>
          <a href="/create_account_user">CREAR CUENTA</a>
        </div>
-           
-       </center>
 
-
+       <footer>
+          <p>Copyright @</p>
+       </footer>
+       
 
 
     
