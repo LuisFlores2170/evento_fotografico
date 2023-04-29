@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">   
+    <title>LOGIN</title>
 </head>
 <body>
-    <h1>Hola mundo</h1>
+
+
+    
+   <body>
+       <center>
+        
+        <header>
+             <h1>
+                  BIBLIOTECA VIRTUAL
+             </h1>
+             <img src="https://admisionweb.uagrm.edu.bo/img/ficct-892x892.png" width="400" alt="">
+        </header>
+   
+       <form action="{{url_for('control_persona')}}" method="POST">
+             
+             <h2>LOGIN</h2>
+             {% with messages = get_flashed_messages()  %}
+                  {% for message in messages %}
+                       <P>{{ message }}</P>
+                  {% endfor %}
+             {% endwith %}
+             <div>
+                  <input name="nombre" type="text" required>
+                  <label>nombre</label>
+             </div>
+           
+             <div>
+                  <input name="codigo" type="text" required>
+                   <label>codigo</label>
+             </div>
+   
+             
+           
+           <button type="submit">ENTRAR</button>
+             
+       </form>
+       <div>
+         <a href="/create_account_user">CREAR CUENTA</a>
+       </div>
+           
+       </center>
+
+
+
+
+    
 </body>
 </html>
