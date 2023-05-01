@@ -1,6 +1,9 @@
 import json
 import base64
 
+n = 'Luis Fernando Hinojosa Flores'
+print(len(n))
+
 data = {}
 with open('logoEVENTO.jpg', mode='rb') as file:
     img = file.read()

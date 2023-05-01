@@ -1,60 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">   
-    <title>LOGIN</title>
-</head>
-<body>
-     <body>
-               <header>
-                    <h1>EVENTO FOTOGRAFICO</h1>
-                    <div class="img">
-                         <img style="
-                                   background-image: url({{foto}});
-                                   background-size: contain;
-                                   background-repeat: no-repeat;
-                              " 
-                              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                              width="550" >
-                    </div>
-               </header>
-   
-       <form action="#" method="POST">
-             
-             <h2>LOGIN</h2>
-             {% with messages = get_flashed_messages()  %}
-                  {% for message in messages %}
-                       <P>{{ message }}</P>
-                  {% endfor %}
-             {% endwith %}
-             <div>
-                  <input name="nombre" type="text" required>
-                  <label>USUARIO</label>
-             </div>
-           
-             <div>
-                  <input name="codigo" type="text" required>
-                   <label>CONTARSEÑA</label>
-             </div>
-   
-             
-           
-           <button type="submit">ENTRAR</button>
-             
-       </form>
-       <div>
-         <a href="/create_account_user">CREAR CUENTA</a>
-       </div>
+{% extends "base.html" %}
+{% block title %}
+     <title>LOGIN</title>
+{% endblock %}
 
-       <footer>
-          <p>Copyright @</p>
-       </footer>
-       
+{% block body %}
+     <header>
+          <h1>EVENTO FOTOGRAFICO</h1>
+          <div class="img">
+               <img style="
+                         background-image: url({{foto}});
+                         background-size: cover;
+                         background-repeat: no-repeat;
+                    " 
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                    width="400" height="200">
+          </div>
+     </header>
 
 
-    
-</body>
-</html>
+     <form action="/login" method="POST">
+          <h2>LOGIN</h2>
+          
+          {% with messages = get_flashed_messages()  %}
+               {% for message in messages %}
+                    <p {{message.0}}={{message.1}} >{{ message.2 }}</p>
+               {% endfor %}
+          {% endwith %}
+          <div class="input">
+               <input name="username" type="text" required>
+               <label>USUARIO</label>
+          </div>
+
+          <div class="input">
+               <input name="password" type="text" required>
+               <label>CONTARSEÑA</label>
+          </div>
+
+
+
+          <button type="submit">ENTRAR</button>
+
+     </form>
+     <div class="link">
+          <a href="/account_creation_form">CREAR CUENTA</a>
+     </div>
+
+     <footer>
+          <p>
+          Author: @L:
+               <a href="mailto:hinojosafloresluisfernandogmail.com">hinojosafloresluisfernandogmail.com</a>
+          </p>
+     </footer>
+
+{% endblock %}
