@@ -1,2 +1,3 @@
 
-from . import model_perfil
+from .model_perfil import *
+from .model_photographer import *

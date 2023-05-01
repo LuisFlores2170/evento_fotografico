@@ -5,7 +5,8 @@ CREATE TABLE fotografo(
 	fotos_subidas INTEGER,
 	puntos INTEGER
 );
-
+select * from fotografo
+drop table fotografo
 --------------------------------------------------------------------------------
 
 CREATE TABLE cliente(
@@ -13,6 +14,8 @@ CREATE TABLE cliente(
 	id_perfil INTEGER REFERENCES perfil(id) on update cascade on delete cascade,
 	fotos_compradas INTEGER
 );
+SELECT * FROM CLIENTE
+drop table cliente
 
 --------------------------------------------------------------------------------
 
@@ -21,9 +24,14 @@ CREATE TABLE perfil(
 	usuario VARCHAR(30),
 	contrasenia VARCHAR(10),
 	description VARCHAR(100),
-	tipo VARCHAR(1)
+	tipo VARCHAR(10)
 );
+select * from perfil
+drop table perfil
 
+delete from perfil where id = 2
+SELECT id FROM perfil WHERE usuario = '123'
+SELECT id FROM perfil WHERE usuario = 'Luis'
 --------------------------------------------------------------------------------
 
 CREATE TABLE permisos(

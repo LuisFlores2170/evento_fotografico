@@ -1,5 +1,5 @@
 
-from flask import Flask, flash
+from flask import Flask
 
 #--------------------------------------------------------------------------
 

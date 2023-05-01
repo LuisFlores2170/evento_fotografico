@@ -2,14 +2,6 @@ from flask import Flask, render_template, redirect, url_for, session, request, f
 from main import app
 from models.__init__ import *
 sesion = session
-#----------------------------------------------------------------------------------------------
-
-# Mensaje de registro de nota de credito
-def message(done):
-    msg = ['style','color:red', 'EL PROCESO HA FALLADO']
-    if done:
-        msg = ['style','color:green', 'PROCESO EXITOSO']
-    return msg
 
 #----------------------------------------------------------------------------------------------
 
@@ -25,11 +17,12 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    id_user = model_perfil.model_perfil.get_perfil(
+    answer_obtained = model_perfil.get_perfil(
         request.form.get('username'),
         request.form.get('password')
     )
-    flash(message(id_user))
+    flash(answer_obtained[1])
+
     
     return redirect(url_for('index'))
 
@@ -37,4 +30,20 @@ def login():
 
 @app.route('/account_creation_form')
 def account_creation_form():
-    return render_template('account_creation_form.html', foto = 'https://admisionweb.uagrm.edu.bo/img/ficct-892x892.png')
+    return render_template(
+        'account_creation_form.html', 
+        foto = 'https://th.bing.com/th/id/OIP.e4iL0MAAR5a0dsecvgUk_wHaE8?pid=ImgDet&rs=1'
+    )
+
+
+#----------------------------------------------------------------------------------------------
+
+@app.route('/account_creation', methods=['POST'])
+def account_creation():
+    done = model_perfil.register(
+        request.form.get('username'),
+        request.form.get('password'),
+        request.form.get('type')
+    )
+    flash(done)
+    return redirect(url_for('account_creation_form'))
