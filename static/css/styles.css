@@ -3,12 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-header{
+.h_login{
     padding-top: 40px;
     margin: auto;
 }
 
-h1 {
+.title_1 {
     font-size: 50px;
     color: #017bab;
     text-align: center;
@@ -71,7 +71,7 @@ input:focus{
     color: white
 }
 
-label{
+.i_label{
     font-size: 16px;
     position: absolute;
     left: 5px;
@@ -108,7 +108,7 @@ button:hover{
 
 
 
-h2, h3, footer {
+.title_2, h3, footer {
     color:white;
 }
 

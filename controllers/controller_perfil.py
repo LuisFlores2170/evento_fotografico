@@ -2,6 +2,9 @@ from database.bd_connexion import *
 
 message_content = ['style','color:red', 'HA OCURRIDO UN ERROR', None]
 
+def reset_msg():
+    return ['style','color:red', 'HA OCURRIDO UN ERROR', None]
+
 #---------------------------------------------------------------------------------------------
 
 def update_msg(color, msg, data):
@@ -12,6 +15,7 @@ def update_msg(color, msg, data):
 #---------------------------------------------------------------------------------------------
 
 def validate_username(username = None):
+    print(len(username))
     if len(username)<31:
         update_msg(
             'color:green',
@@ -67,7 +71,6 @@ def validate_operation_performed(done = None, msg = None):
 
 def user_available(username = None):
     id = db_fetchone(f"SELECT id FROM perfil WHERE usuario = '{username}'")
-    print(id)
     if id == None:
         update_msg(
             'color:green',
@@ -116,13 +119,19 @@ def already_username_and_password(username = None, password = None):
 
 #---------------------------------------------------------------------------------------------
 
-def verified_data(n_usuario, n_contrasenia):
-    valid_data = validate_profile_data(n_usuario,n_contrasenia)
-    if valid_data[3] in [False, None]:
-        return valid_data
+def verified_data(n_usuario : str , n_contrasenia: str):
+    n_usuario = n_usuario.strip(' ')
+    n_contrasenia = n_contrasenia.strip(' ')
+    
+    if len(n_usuario) > 0 and len(n_contrasenia) > 0:
         
-    already_data = already_username_and_password(n_usuario, n_contrasenia)
-    if already_data[3] in [False, None]:
-        return already_data
+        valid_data = validate_profile_data(n_usuario,n_contrasenia)
+        if valid_data[3] in [False, None]:
+            return valid_data
+            
+        already_data = already_username_and_password(n_usuario, n_contrasenia)
+        if already_data[3] in [False, None]:
+            return already_data
+        
     
     return message_content

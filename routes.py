@@ -22,8 +22,20 @@ def login():
         request.form.get('password')
     )
     flash(answer_obtained[1])
+    if answer_obtained[0] != None:
+        sesion['id'] = answer_obtained[0]
+        print('id:', answer_obtained[0])
+        return redirect(url_for('panel'))
 
     
+    return redirect(url_for('index'))
+
+#----------------------------------------------------------------------------------------------
+
+@app.route('/logout')
+def logout():
+    if sesion.get('id') != None:
+        sesion['id'] = None
     return redirect(url_for('index'))
 
 #----------------------------------------------------------------------------------------------
@@ -47,3 +59,12 @@ def account_creation():
     )
     flash(done)
     return redirect(url_for('account_creation_form'))
+
+
+#----------------------------------------------------------------------------------------------
+
+@app.route('/panel')
+def panel():
+    if sesion.get('id') != None:
+        return render_template('panel.html')
+    return redirect(url_for('index'))

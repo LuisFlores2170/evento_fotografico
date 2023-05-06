@@ -22,7 +22,6 @@ def db_fetchall(query = None):
 def db_fetchone(query = None):
     try:
         cursor = connection.cursor()
-        print(query)
         cursor.execute(query)
         data = cursor.fetchone()
         if data != None:
@@ -35,10 +34,10 @@ def db_fetchone(query = None):
 
 try:
     connection = psycopg2.connect(
-        host='ec2-3-208-74-199.compute-1.amazonaws.com',
-        user='narfdmrxvcsaoe',
-        password='3929fbd7efeae68d3e6d41d9b72fa3df8f27d1eb2abcb3f09ac287edad379cae',
-        database='d56qlui1mu5fdg'
+        host='ec2-54-211-177-159.compute-1.amazonaws.com',
+        user='dngecpoomqhkgz',
+        password='8ecd99476966736ff7e4fb8205fe986f35d9e436dbe5d6b7f236f16196ff90ce',
+        database='d5m1l1mlnh5md0'
     )
     connection.autocommit = True
     print("Conexión exitosa.")
